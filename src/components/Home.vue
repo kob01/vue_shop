@@ -3,7 +3,7 @@
     <!-- 头部区域 -->
     <el-header>
       <div>
-        <img src="../assets/logo-y.png" />
+        <img src="https://i2.hdslb.com/bfs/face/f7c909737e967f8b9600a500d92cde7e4f9f325f.jpg@150w_150h.jpg" />
         <span>后台管理系统</span>
       </div>
       <el-button type="info" @click="logout">退出</el-button>
@@ -111,6 +111,7 @@ export default {
     display: flex;
     align-items: center;
     img {
+      width: 60px;
       height: 60px;
     }
     span {
@@ -141,6 +142,7 @@ export default {
 }
 
 .el-main {
+  padding: 0;
   background-color: #e9eef3;
   color: #333;
   text-align: center;
