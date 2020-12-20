@@ -142,7 +142,6 @@ export default {
 }
 
 .el-main {
-  padding: 0;
   background-color: #e9eef3;
   color: #333;
   text-align: center;
