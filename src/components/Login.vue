@@ -74,10 +74,20 @@ export default {
 
 <style lang="less" scoped>
 .login_container {
-  background-color: #2b4b6b;
+  // background-color: #2b4b6b;
+  background: linear-gradient(135deg, hsl(170deg, 80%, 70%), hsl(190deg, 80%, 70%), hsl(250deg, 80%, 70%), hsl(320deg, 80%, 70%));
+  background-size: 200% 200%;
   height: 100%;
+  animation: bg-move 5s ease alternate infinite;
 }
-
+@keyframes bg-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
 .login_box {
   width: 450px;
   height: 300px;
