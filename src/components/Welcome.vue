@@ -27,6 +27,10 @@ export default {
 h3 {
   text-align: left;
 }
+h3 {
+  line-height: clamp(1rem, 2.5vw, 3rem);
+  font-size: clamp(1rem, 2.5vw, 3rem);
+}
 .card {
   display: flex;
   width: 220px;

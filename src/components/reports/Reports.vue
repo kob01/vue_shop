@@ -14,62 +14,74 @@
 </template>
 
 <script>
-import echarts from 'echarts'
 import _ from 'lodash'
+let myChart = null
+const options = {
+  title: {
+    text: '用户来源'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#E9EEF3'
+      }
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      boundaryGap: false
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ]
+}
 export default {
   data() {
     return {
-      options: {
-        title: {
-          text: '用户来源'
-        },
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'cross',
-            label: {
-              backgroundColor: '#E9EEF3'
-            }
-          }
-        },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
-        },
-        xAxis: [
-          {
-            boundaryGap: false
-          }
-        ],
-        yAxis: [
-          {
-            type: 'value'
-          }
-        ]
-      },
       autoHeight: 0
     }
   },
-  created() {},
-  async mounted() {
+  mounted() {
+    this.init()
+    window.addEventListener('resize', this.reszieChart)
     // 基于准备好的dom，初始化echarts实例
-    let myChart = echarts.init(document.getElementById('main'))
-
-    const { data: res } = await this.$http.get('reports/type/1')
-    if (res.meta.status !== 200) {
-      return this.$message.error('获取折线图数据失败！')
-    }
-    this.autoHeight = res.data.series.length * 55 + 50
-    // this.counts为柱状图的条数，即数据长度
-    myChart.getDom().style.height = this.autoHeight + 'px'
-    const result = _.merge(res.data, this.options)
-    // 5展示数据
-    myChart.resize()
-    myChart.setOption(result)
   },
-  methods: {}
+  beforeDestroy() {
+    window.removeEventListener('resize', this.reszieChart)
+    myChart = null
+  },
+  methods: {
+    async init() {
+      const { data: res } = await this.$http.get('reports/type/1')
+      if (res.meta.status === 200) {
+        myChart = this.$echarts.init(document.getElementById('main'))
+      }
+      if (res.meta.status !== 200) {
+        return this.$message.error('获取折线图数据失败！')
+      }
+      this.autoHeight = res.data.series.length * 55 + 50
+      // this.counts为柱状图的条数，即数据长度
+      myChart.getDom().style.height = this.autoHeight + 'px'
+      const result = _.merge(res.data, options)
+      // 5展示数据
+      myChart.resize()
+      myChart.setOption(result)
+    },
+    reszieChart() {
+      myChart && myChart.resize()
+    }
+  }
 }
 </script>
 

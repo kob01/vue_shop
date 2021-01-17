@@ -124,6 +124,7 @@ export default {
   background-color: #545c64;
   color: #fff;
   transition: width 0.2s;
+  overflow-x: hidden;
   .toggle-button {
     font-size: 10px;
     height: 30px;
@@ -142,6 +143,7 @@ export default {
 }
 
 .el-main {
+  padding: 10px;
   background-color: #e9eef3;
   color: #333;
   text-align: center;

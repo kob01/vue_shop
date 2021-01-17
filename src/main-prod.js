@@ -9,7 +9,7 @@ import ZkTable from 'vue-table-with-tree-grid'
 import VueQuillEditor from 'vue-quill-editor'
 // 导入nprogress
 import NProgress from 'nprogress'
-
+import echarts from 'echarts'
 import axios from 'axios'
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
@@ -26,6 +26,7 @@ axios.interceptors.response.use(config => {
   return config
 })
 Vue.prototype.$http = axios
+Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 Vue.component('tree-table', ZkTable)
