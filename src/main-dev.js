@@ -5,7 +5,7 @@ import './plugins/element.js'
 // 导入字体图标
 import './assets/fonts/iconfont.css'
 // 导入全局样式表
-import './assets/css/global.css'
+import './assets/css/global.less'
 import ZkTable from 'vue-table-with-tree-grid'
 import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'

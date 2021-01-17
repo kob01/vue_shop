@@ -34,8 +34,8 @@
                 <i class="el-icon-menu"></i>
                 <!-- 文本 -->
                 <span>{{ item2.authName }}</span>
-              </template></el-menu-item
-            >
+              </template>
+            </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+// TODO左侧宽度变化BUG
 export default {
   data() {
     return {
@@ -143,10 +144,18 @@ export default {
 }
 
 .el-main {
+  display: flex;
   padding: 10px;
   background-color: #e9eef3;
   color: #333;
   text-align: center;
+  > div {
+    flex: 1;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 14px 1fr;
+  }
 }
 
 .iconfont {

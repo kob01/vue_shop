@@ -87,6 +87,6 @@ export default {
 
 <style lang="less" scoped>
 #main {
-  width: 800px;
+  width: 100%;
 }
 </style>
