@@ -12,9 +12,7 @@
     <el-container>
       <!-- 侧边栏 -->
       <el-aside :width="isCollapse ? '60px' : '200px'">
-        <div class="toggle-button" @click="toggleNav">
-          |||
-        </div>
+        <div class="toggle-button" @click="isCollapse = !isCollapse">|||</div>
         <!-- 侧边栏菜单区域 -->
         <el-menu background-color="#545c64" text-color="#fff" active-text-color="#409eff" unique-opened :collapse="isCollapse" :collapse-transition="false" router :default-active="activePath">
           <!-- 一级菜单 -->
@@ -83,10 +81,6 @@ export default {
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menulist = res.data
     },
-    // 切换菜单折叠与展开
-    toggleNav() {
-      this.isCollapse = !this.isCollapse
-    },
     // 保持链接激活状态
     saveNavState(activePath) {
       window.sessionStorage.setItem('activePath', activePath)
@@ -144,18 +138,11 @@ export default {
 }
 
 .el-main {
-  display: flex;
+  // display: flex;
   padding: 10px;
   background-color: #e9eef3;
   color: #333;
   text-align: center;
-  > div {
-    flex: 1;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 14px 1fr;
-  }
 }
 
 .iconfont {
